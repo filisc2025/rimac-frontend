@@ -16,25 +16,25 @@ const calculateFinalPrice = (basePrice, forSelf) => {
 
 
 const Summary = () => {
-  const { userData, quotation } = useQuoting();
-  const navigate = useNavigate();
+  const { userData, quotation } = useQuoting();
+  const navigate = useNavigate();
 
-  // Guardrail: si no hay plan, volver al inicio
-  if (!quotation.planChosen || !userData || !quotation.dni) {
-    navigate('/');
-    return null;
-  }
+  // Guardrail: si no hay plan, volver al inicio
+  if (!quotation.planChosen || !userData || !quotation.dni) {
+    navigate('/');
+    return null;
+  }
 
-  const { planChosen, dni, phone, forSelf } = quotation;
+  const { planChosen, dni, phone, forSelf } = quotation;
   
   // 1. Calcular el costo final del plan
   const finalPrice = calculateFinalPrice(planChosen.price, forSelf);
   const finalPriceFormatted = `S/${finalPrice.toFixed(2)} al mes`;
 
 
-  return (
-    <div className="summary-page">
-      
+  return (
+    <div className="summary-page">
+      
       {/* Ajuste de la estructura del Header y Steps Bar para replicar la imagen d3cb0a.png
         El componente Quoting.jsx ya incluye el header y steps bar. Aquí, asumiré que
         la estructura visual de la imagen d3cb0a.png es una combinación del header
@@ -45,7 +45,7 @@ const Summary = () => {
       {/* Header (RIMAC Logo y Contacto - Lo más probable es que sean componentes globales) */}
       <header className="header">
           <div className="header__logo">
-              <img src="./src/assets/img/logo.png" alt="Rimac Logo"/>
+              <img src="https://github.com/filisc2025/rimac-frontend/blob/main/src/assets/img/logo.png" alt="Rimac Logo"/>
           </div>
           <div className="header__contact">
               <span>¡Compra por este medio!</span>
@@ -69,7 +69,7 @@ const Summary = () => {
       </div>
       
       {/* Contenido principal del resumen */}
-      <main className="summary-page__main">
+      <main className="summary-page__main">
           {/* Botón Volver */}
           <button className="back-button" onClick={() => navigate('/cotizar')}>
              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -79,18 +79,17 @@ const Summary = () => {
             <span>Volver</span>
           </button>
           
-            <header className="summary-page__header">
-                <h1>Resumen del seguro</h1>
-            </header>
+            <header className="summary-page__header">
+                <h1>Resumen del seguro</h1>
+            </header>
 
-            <article className="summary-card">
-                <h3 className="summary-card__title">PRECIOS CALCULADOS PARA:</h3>
-                
+            <article className="summary-card">
+                <h3 className="summary-card__title">PRECIOS CALCULADOS PARA:</h3>
                 {/* Nombre del asegurado (Rocío Miranda Díaz) */}
-                <div className="summary-card__section summary-card__section--personal">
+                <div className="summary-card__section summary-card__section--personal">
                     {/* El ícono de persona, asumo que es un SVG o componente */}
-                    <p className="summary-card__name">
-                        <span className="summary-card__icon">
+                    <p className="summary-card__name">
+                        <span className="summary-card__icon">
                             {/* Reemplazar con el SVG de persona */}
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M20.1463 13.7647H18.2309C16.1102 13.7647 14.4 15.4756 14.4 17.5972V22H20.1691C22.2898 22 24 20.2891 24 18.1675V17.62C24 15.4756 22.267 13.7647 20.1463 13.7647Z" fill="#141938"/>
@@ -106,20 +105,19 @@ const Summary = () => {
                     <p>Celular: {phone}</p>
                 </div>
 
-                <div className="summary-card__section summary-card__section--plan">
-                    <h4 className="summary-card__subtitle">Plan elegido</h4>
-                    <p>{planChosen.name}</p> 
+                <div className="summary-card__section summary-card__section--plan">
+                    <h4 className="summary-card__subtitle">Plan elegido</h4>
+                    <p>{planChosen.name}</p> 
                     {/* Usamos el precio final calculado */}
-                    <p className="summary-card__price">Costo del Plan: {finalPriceFormatted}</p>
-                </div>
-            </article>
-            
+                    <p className="summary-card__price">Costo del Plan: {finalPriceFormatted}</p>
+                </div>
+        </article>
             {/* El botón "Comprar" no está en la imagen, solo el contenido del resumen */}
             {/* Si necesitas un botón de acción final, agrégalo aquí */}
             {/* <Button variant="primary">Lo quiero</Button> */}
-        </main>
-    </div>
-  );
+        </main>
+    </div>
+);
 };
 
 export default Summary;
