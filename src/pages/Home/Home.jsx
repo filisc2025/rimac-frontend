@@ -113,7 +113,7 @@ const Home = () => {
             <header className="header">
                 <div className="header__logo">
                     {/* Reemplaza con tu componente Logo si existe, o solo la etiqueta img */}
-                    <img src="https://github.com/filisc2025/rimac-frontend/blob/main/src/assets/img/logo.png" alt="Rimac Logo"/>
+                    <img src="../../assets/img/logo.png" alt="Rimac Logo"/>
                 </div>
                 <div className="header__contact">
                     <span>¡Compra por este medio!</span>
@@ -124,7 +124,7 @@ const Home = () => {
             <main className="main-content">
                 <section className="hero-image">
                     <div className="hero-image-seccion">
-                        <img src="https://github.com/filisc2025/rimac-frontend/blob/main/src/assets/img/fondo.jpg" alt="Familia feliz con seguro Rimac"/>
+                        <img src="../../assets/img/fondo.jpg" alt="Familia feliz con seguro Rimac"/>
                     </div>
                 </section>
 
@@ -215,7 +215,7 @@ const Home = () => {
 
             <footer className="footer">
                 <div className="footer__logo">
-                    <img src="https://github.com/filisc2025/rimac-frontend/blob/main/src/assets/img/logo-white.png" alt="Rimac Logo Blanco"/>
+                    <img src="../../assets/img/logo-white.png" alt="Rimac Logo Blanco"/>
                 </div>
                 <p className="footer__copyright">© 2023 RIMAC Seguros y Reaseguros.</p>
             </footer>

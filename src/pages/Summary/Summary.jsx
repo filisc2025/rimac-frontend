@@ -45,7 +45,7 @@ const Summary = () => {
       {/* Header (RIMAC Logo y Contacto - Lo más probable es que sean componentes globales) */}
       <header className="header">
           <div className="header__logo">
-              <img src="https://github.com/filisc2025/rimac-frontend/blob/main/src/assets/img/logo.png" alt="Rimac Logo"/>
+              <img src="../../assets/img/logo.png" alt="Rimac Logo"/>
           </div>
           <div className="header__contact">
               <span>¡Compra por este medio!</span>

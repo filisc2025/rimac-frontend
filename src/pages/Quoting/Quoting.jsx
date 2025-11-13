@@ -114,7 +114,7 @@ const Quoting = () => {
             <header className="header">
                 <div className="header__logo">
                     {/* Asegúrate de que esta ruta sea correcta */}
-                    <img src="https://github.com/filisc2025/rimac-frontend/blob/main/src/assets/img/logo.png" alt="Rimac Logo"/> 
+                    <img src="../../assets/img/logo.png" alt="Rimac Logo"/> 
                 </div>
                 <div className="header__contact">
                     <span>¡Compra por este medio!</span>
