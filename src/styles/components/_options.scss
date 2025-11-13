@@ -1,0 +1,517 @@
+// src/styles/components/_options.scss
+
+@use '../abstracts/variables' as var;
+
+@use "sass:color";
+
+.step-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin: 2rem auto;
+    max-width: 800px; // Contenedor central
+
+    @media (min-width: var.$breakpoint-desktop) {
+        flex-direction: row; // Tarjetas lado a lado
+        justify-content: center;
+        gap: 2rem;
+    }
+}
+
+.option-card {
+    flex: 1;
+    border: 1px solid #E5E5E5;
+    border-radius: 12px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &.is-selected {
+        border-color: var.$color-primary; // Borde rojo si está seleccionado
+        background-color: #FFF2F2; // Fondo muy claro
+    }
+
+    .icon-wrapper {
+        color: var.$color-primary; 
+        font-size: 1.5rem; 
+        margin-bottom: 0.5rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var.$color-dark-blue;
+    }
+    p {
+        font-size: 0.9rem;
+        color: var.$color-text;
+    }
+    
+    // Icono de check (usando pseudo-elementos o un SVG/Input customizado)
+}
+
+/* =======================================
+   ESTILOS ESPECÍFICOS PARA LA PÁGINA DE COTIZACIÓN (Quoting.jsx)
+   ======================================= */
+
+.quoting-page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f8f9fc; 
+}
+
+/* --- Barra de Pasos (Steps Bar) --- */
+.steps-bar {
+    background-color: #EDEFFC;
+    padding: 15px 0;
+    border-bottom: 1px solid #EDEFFC;
+
+    .steps-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .step {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            font-weight: 600;
+            color: #92929e;
+
+            &.active {
+                color: #141938;
+            }
+
+            .step-number {
+                background-color: #EDEFFC;
+                border: 1px solid #6868fc;
+                border-radius: 50%;
+                width: 24px;
+                height: 24px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-right: 8px;
+                font-weight: bold;
+                color: #92929e;
+
+                &.active-number { // Clase para el círculo azul
+                    background-color: #4F4FFF;
+                    border-color: #4F4FFF;
+                    color: #fff;
+                }
+            }
+        }
+        .step-separator {
+            margin: 0 15px;
+            color: #4F4FFF;
+            font-size: 18px;
+            font-weight: 300;
+        }
+    }
+}
+
+/* --- Contenido Principal --- */
+.quoting-main-content {
+    flex-grow: 1;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.quoting-layout {
+    display: flex;
+    gap: 40px;
+    flex-direction: column;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+/* --- Sidebar (Columna Izquierda: Volver) --- */
+.quoting-sidebar {
+    flex: 0 0 50px; 
+    .back-button {
+        display: flex;
+        align-items: center;
+        background: none;
+        border: none;
+        color: #4F4FFF;
+        font-size: 16px;
+        cursor: pointer;
+        padding: 5px 0;
+        gap: 10px;
+
+        img {
+            margin-right: 8px;
+            width: 16px; 
+            height: 16px;
+        }
+
+        &:hover {
+            color: #007bff;
+        }
+    }
+}
+
+/* --- Detalles (Columna Derecha) --- */
+.quoting-details {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .quoting-title {
+        font-size: 32px;
+        font-weight: bold;
+        color: #141938;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    .quoting-subtitle {
+        font-size: 16px;
+        color: #141938;
+        margin-bottom: 30px;
+        font-family: 'Lato', sans-serif; // Asegura Lato y una fuente genérica de respaldo
+        font-weight: 400; // Corresponde a Regular
+        line-height: 28px; // Line height
+        letter-spacing: 0.1px;
+        text-align: center;
+    }
+}
+
+/* --- Tarjetas de Opción (Para mí / Para alguien más) --- */
+.options-selection-cards {
+    display: flex;
+    gap: 20px;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
+
+    .option-card {
+        flex: 1;
+        background-color: #fff;
+        border: 1px solid #e0e2e7;
+        box-shadow: 0 0 10px 10px #03050f0a;
+        border-radius: 20px;
+        padding: 25px;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: relative;
+        transition: all 0.2s ease-in-out;
+
+        &.selected {
+            border-color: #03050F;
+            box-shadow: 0 0 0 1px #03050F;
+            
+            .radio-indicator {
+                border-color: #389E0D;
+                background-color: #389E0D;
+            }
+        }
+
+        .card-icon {
+            margin-bottom: 15px;
+            // Estilos para el contenedor del icono (el círculo de color en la imagen)
+            background-color: #f5f6fa; // Fondo claro para el icono
+            padding: 10px;
+            border-radius: 8px;
+            img {
+                width: 32px;
+                height: 32px;
+            }
+        }
+        .card-title {
+            font-size: 18px;
+            color: #141938;
+            margin-bottom: 5px;
+            font-family: 'Lato', sans-serif; // Asegura Lato y una fuente genérica de respaldo
+            font-weight: 700; // Corresponde a Regular
+        }
+        .card-description {
+            font-size: 12px;
+            color: #141938;
+            line-height: 1.5;
+            font-family: 'Lato', sans-serif; // Asegura Lato y una fuente genérica de respaldo
+            font-weight: 400; // Corresponde a Regular
+            line-height: 20px; // Line height
+            letter-spacing: 0.2px;
+        }
+
+        .radio-indicator {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ccc;
+            border-radius: 50%;
+            background-color: #fff;
+
+            &.selected:after {
+                content: '';
+                display: block;
+                width: 10px;
+                height: 10px;
+                background-color: #fff;
+                border-radius: 50%;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+}
+
+/* --- Lista de Planes --- */
+.plans-list-section {
+    margin-top: 40px;
+    
+    .plans-list-title {
+        font-size: 24px;
+        font-weight: bold;
+        color: #4a4a4a;
+        margin-bottom: 25px;
+    }
+
+    // Estilos para las tarjetas individuales de plan (replicando el diseño en columnas pequeñas)
+    .plans-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 3 o 4 columnas */
+        gap: 20px;
+    }
+
+    .plan-item-card {
+        background-color: #fff;
+        border: 1px solid #e0e2e7;
+        border-radius: 8px;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        text-align: center; // Centrar el texto para que coincida con el diseño
+
+        h3 {
+            font-size: 18px;
+            color: #4a4a4a;
+            margin-bottom: 5px;
+        }
+        
+        .plan-price, .plan-price-old {
+            font-size: 14px;
+            color: #7981B2;
+        }
+        .plan-price-old {
+            text-decoration: line-through;
+            color: #7981B2;
+        }
+        
+        .plan-price-discount {
+            font-size: 16px;
+            color: #ef3340; // Rojo para el descuento
+            font-weight: bold;
+        }
+        
+        .select-plan-button {
+            background: #FF1C44;
+            color: #FFFFFF;
+            font-family: "Lato", sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            width: 100%;
+            height: 48px;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 32px;
+            cursor: pointer;
+            text-align: center;
+            transition: background 0.3s ease;
+            margin-top: auto;
+
+            &:hover {
+                background-color: #ef5973;
+            }
+        }
+    }
+}
+
+/* --- Lista de Planes --- */
+.plans-list-section {
+    margin-top: 40px;
+    .plans-list-title {
+        font-size: 24px;
+        font-weight: bold;
+        color: #4a4a4a;
+        margin-bottom: 25px;
+}
+
+    .plans-wrapper { /* Clase que usamos en Quoting.jsx para el contenedor flex/grid */
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 32px; /* Espacio entre las tarjetas */
+        justify-content: center;
+
+        @media (max-width: 992px) {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+    }
+
+    .plan-item-card {
+        background-color: #fff;
+        border: 1px solid #E4E8F7; /* Borde claro */
+        border-radius: 12px;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; /* Alineación izquierda */
+        position: relative;
+        text-align: left; /* Aseguramos que el texto interno no se centre */
+        box-sizing: border-box; /* Incluye padding y border en el width/height */
+        box-shadow: 0 0 10px 10px rgba(3, 5, 15, 0.0392156863);
+
+        /* Estilo para el plan recomendado (si aplica) */
+        
+
+        .plan-tag {
+            /* Etiqueta "Plan recomendado" */
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -50%); 
+            background-color: #7DF0BA; /* Usé un gris oscuro, ajusta el color exacto si es diferente */
+            color: #14193B;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 8px;
+            white-space: nowrap;
+            text-transform: uppercase;
+            z-index: 10;
+        }
+        
+        .plan-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+            margin-bottom: 24px;
+        }
+
+        .plan-title {
+            /* Estilos solicitados para el título del plan */
+            font-family: 'Lato', sans-serif;
+            font-weight: 900; /* Black */
+            font-size: 24px;
+            line-height: 32px;
+            letter-spacing: -0.2px;
+            color: #141938; /* Color de letra solicitado */
+            margin: 0;
+            max-width: 80%;
+        }
+
+        /*.plan-icon {
+             Estilos para el contenedor del ícono, si es necesario 
+             El SVG debe tener sus propios colores 
+        }/*
+
+
+        .plan-price-info {
+            margin-bottom: 16px; 
+            width: 100%; /* Ocupa todo el ancho para la línea de separación */
+        }
+
+        .plan-price-label {
+            /* Texto "COSTO DEL PLAN" */
+            font-family: 'Lato', sans-serif;
+            font-weight: 900; /* Black */
+            font-size: 12px;
+            line-height: 16px;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            color: #7981B2; /* Color solicitado */
+            margin-bottom: 4px;
+        }
+
+        .plan-price-old {
+            /* Precio tachado "S/39 antes" */
+            font-family: 'Lato', sans-serif;
+            font-weight: 400; 
+            font-size: 12px;
+            line-height: 16px;
+            color: #7981B2;
+            text-decoration: line-through; 
+            margin: 0;
+        }
+
+        .plan-price-current {
+            /* Precio actual "$37.05 al mes" */
+            font-family: 'Lato', sans-serif;
+            font-weight: 900; 
+            font-size: 20px;
+            line-height: 28px;
+            color: #141938; 
+            margin: 0;
+        }
+        
+        .plan-benefits-list {
+            /* Línea de separación y lista */
+            border-top: 1px solid #E4E8F7; /* Línea separadora */
+            width: 100%;
+            padding-top: 24px; 
+            padding-left: 0;
+            margin-bottom: 32px;
+            list-style: none;
+            text-align: justify;
+            
+            li {
+                /* Estilo de la descripción (Ej: Médico general...) */
+                font-family: 'Lato', sans-serif;
+                font-weight: 400; /* Regular */
+                font-size: 14px;
+                line-height: 20px;
+                color: #141938; /* Color de letra solicitado */
+                margin-bottom: 16px;
+                /* El punto del bullet se agrega en el JSX (•) */
+                display: list-item; 
+                text-align: left;
+            }
+        }
+        
+        .select-plan-button {
+            /* Estilos solicitados para el botón */
+            background: #FF1C44; /* Color solicitado */
+            color: #FFFFFF;
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            
+            /* Dimensiones y formato */
+            width: 100%; 
+            height: 48px;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 32px;
+            cursor: pointer;
+            text-align: center;
+            transition: background 0.3s ease;
+            
+            margin-top: auto; /* Empuja el botón al fondo de la tarjeta */
+
+            &:hover {
+                background-color: color.adjust(#FF1C44, $lightness: -5%);
+            }
+        }
+    }

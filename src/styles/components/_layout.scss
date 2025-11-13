@@ -1,0 +1,71 @@
+// src/styles/components/_layout.scss
+
+@use '../abstracts/variables' as var;
+
+.main-content {
+    display: flex;
+    flex-direction: column; 
+    min-height: auto; 
+    
+    @media (min-width: var.$breakpoint-desktop) {
+        flex-direction: row; 
+        min-height: auto; 
+        // Eliminamos el padding aquí y lo ponemos directamente en form-section para controlar el espaciado
+        padding: 0; 
+    }
+}
+
+.hero-image {
+    display: none; 
+
+    .hero-image-seccion{
+        display: flex;
+        justify-content: center;
+    }
+
+    @media (min-width: var.$breakpoint-desktop) {
+        display: flex; // Usamos flex para centrar la imagen internamente si es necesario
+        flex: 1 1 50%; // Ocupa el 50% del ancho
+        max-width: 50%;
+
+        // O si es un degradado morado-azul, el que tenías:
+        // background: linear-gradient(180deg, #8538E8 0%, #2B4CFF 30%, #44E0E8 70%, #B0F0FF 100%);
+        // Ajusta el padding para que la imagen se separe del borde y tenga espacio para sombra
+        align-items: center; // Centra verticalmente la imagen dentro de su contenedor
+        justify-content: flex-end; // Empuja la imagen hacia la derecha
+        
+        img {
+            // CLAVE: La imagen debe ocupar el 100% de la altura de su padre.
+            height: 50%; 
+            width: auto; // Deja que el ancho se ajuste proporcionalmente
+            max-width: 60%; // Asegura que no se desborde
+            object-fit: cover; // Asegura que la imagen cubra el espacio sin distorsionarse
+            border-radius: 12px; // Bordes redondeados para la imagen
+        }
+    }
+}
+
+.form-section {
+    flex: 1 1 50%; 
+    display: flex;
+    justify-content: flex-start; // Alinea la tarjeta a la izquierda de su 50% de espacio
+    align-items: center; // Centra verticalmente la tarjeta del formulario
+    
+    // Degradado para la sección de escritorio
+    @media (min-width: var.$breakpoint-desktop) {
+        
+        padding: 4rem 2rem; // Espaciado alrededor de la tarjeta del formulario
+    }
+
+    // Para la versión móvil, el fondo será blanco
+    background-color: #fff;
+    height: 100%;
+}
+
+.form-card {
+    background-color: #fff;
+    padding: 2.5rem; // Más padding dentro de la tarjeta
+    border-radius: 12px;
+    width: 100%; 
+    max-width: 500px; // Mantiene el ancho máximo de la tarjeta del formulario
+}

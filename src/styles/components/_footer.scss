@@ -1,0 +1,41 @@
+// src/styles/components/_footer.scss
+
+@use '../abstracts/variables' as var;
+
+// El fondo del footer es #03050F
+$color-footer-dark: #03050F; 
+
+.footer {
+    background-color: $color-footer-dark; 
+    color: #fff;
+    display: flex;
+    justify-content: space-between; // Alinea logo a la izquierda y copyright a la derecha
+    align-items: center;
+    padding: 1.5rem 1.5rem; // Padding vertical y horizontal
+    width: 100%;
+
+    @media (min-width: var.$breakpoint-desktop) {
+        padding: 1.5rem 15rem; // Más padding lateral en escritorio (igual que el header)
+    }
+
+    &__logo {
+        display: flex;
+        align-items: center;
+        
+        img {
+            height: 2rem; // Ajustar el tamaño del logo si es necesario (es un poco más pequeño)
+            width: auto;
+        }
+    }
+    
+    &__copyright {
+        // Aplicación de estilos para el texto de copyright
+        font-family: 'BR Sonoma', sans-serif; // Usar la fuente declarada
+        font-weight: 400;                     // Regular
+        font-size: 14px;                      // Tamaño
+        line-height: 16px;                    // Altura de línea
+        letter-spacing: 0px;                  // Espaciado entre letras
+        // vertical-align: middle; // No es una propiedad CSS, el align-items: center del padre lo maneja
+        text-align: right;
+    }
+}

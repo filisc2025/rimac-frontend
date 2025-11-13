@@ -1,0 +1,26 @@
+// src/styles/main.scss
+
+@use './abstracts/variables' as var;
+@use './base/reset';
+@use './base/base'; // Nuevo archivo para estilos globales del body
+
+// Layout
+@use './components/layout'; // Para la estructura principal (imagen + formulario)
+
+// Componentes
+@use './components/header';
+@use './components/form'; // Estilos para el formulario
+@use './components/footer';
+@use './components/options';
+@use './components/summary';
+// Los siguientes los comentamos por ahora, si solo estamos en la página de inicio
+// @use './components/plans'; 
+// @use './components/summary'; 
+
+body {
+    font-family: Arial, sans-serif;
+    color: var.$color-text; // Usando tu variable de texto para el body por defecto
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+}

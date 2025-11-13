@@ -1,0 +1,244 @@
+// src/styles/components/_form.scss
+
+@use '../abstracts/variables' as var;
+@use 'sass:color';
+
+$font-family: 'BR Sonoma', sans-serif;
+$color-input-background: #F7F8F9;
+$color-input-border: #E0E0E0;
+$color-button-dark: #03050F;
+$color-text-placeholder: #686b79;
+
+form {
+    margin-top: 2rem;
+
+    // --- 1. Etiqueta "Seguro Salud Flexible" (Tag) ---
+    .tag {
+        // Degradado de fondo
+        background: linear-gradient(86.01deg, #00F4E2 0%, #00FF7F 100%);
+        color: #000;
+        
+        // Estilos de dimensiones y caja
+        display: inline-block;
+        width: 172px;
+        height: 24px;
+        padding: 4px 8px;
+        border-radius: 2px;
+        
+        // Tipografía
+        font-family: $font-family;
+        font-weight: 700; 
+        font-size: 14px;
+        line-height: 16px;
+        letter-spacing: 0.4px;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+    }
+
+    // --- 2. Título "Creado para ti y tu familia" ---
+    .title {
+        font-family: $font-family;
+        font-weight: 700; // Bold
+        font-size: 32px;
+        line-height: 40px;
+        letter-spacing: 0%;
+        color: #03050F;
+        margin-top: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    // --- 3. Subtítulo (Descripción) ---
+    .subtitle {
+        font-family: $font-family;
+        font-weight: 600; // SemiBold (600)
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 0.2px;
+        color: #03050F;
+        margin-top: 1rem;
+    }
+    
+    // --- 4. Contenedor de Inputs DNI/Celular y Select ---
+    .input-group {
+        display: flex;
+        gap: 0; // CLAVE: Cambiado a 0 para que se peguen
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+        
+        // Estilos para el SELECT (DNI/CEX)
+        .select-wrapper {
+            flex: 0 0 30%; 
+            max-width: 30%;
+            position: relative; // Para alinear el contenido
+
+            select {
+                width: 100%;
+                // Estilos de caja
+                padding: 0.8rem 1rem; // Ajustar padding base si es necesario
+                border: 1px solid $color-input-border;
+                border-radius: 4px;
+                background-color: $color-input-background;
+                
+                // Tipografía
+                font-family: $font-family; 
+                font-weight: 400; 
+                font-size: 16px;
+                line-height: 19px;
+                letter-spacing: 0px;
+                color: var.$color-text;
+
+                // Unificación de bordes: Quitamos el borde y el radio derecho
+                border-right: none; 
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+        }
+        
+        // Estilos para el input Nro. de documento (que ahora debe usar .floating-label-group)
+        .floating-label-group {
+            flex: 1; // Ocupa el 70% restante
+            // Este grupo no debe tener márgenes, ya que está dentro de .input-group
+        }
+    }
+    
+    // --- 4.1 Estilos base para el Floating Label Group (Celular y Nro. de documento) ---
+    .floating-label-group {
+        position: relative;
+        width: 100%;
+        
+        // Si el grupo es una fila completa (como el celular), añadimos margen inferior
+        &.full-width {
+            margin-bottom: 1rem; 
+        }
+
+        input[type="text"], 
+        input[type="tel"] {
+            width: 100%;
+            // CLAVE: Ajustar padding para que la etiqueta flote
+            padding: 1.2rem 1rem 0.4rem 1rem; 
+            
+            // Estilos de caja comunes
+            background-color: $color-input-background; 
+            border: 1px solid $color-input-border;
+            border-radius: 4px;
+            outline: none;
+            
+            // Tipografía (la misma que ya tenías)
+            font-family: $font-family;
+            font-weight: 400; 
+            font-size: 16px;
+            line-height: 19px;
+            color: var.$color-text;
+            
+            // Aseguramos que el input de Nro. de documento tenga los bordes izquierdos rectos
+            .input-group & {
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+
+            // Estilos de focus
+            &:focus {
+                border-color: var.$color-dark-blue;
+            }
+        }
+        
+        // La ETIQUETA (LABEL)
+        label {
+            position: absolute;
+            top: 0;
+            left: 1rem;
+            
+            // Posición inicial (abajo, en el centro del campo)
+            transform: translateY(0.8rem); 
+            transition: all 0.2s ease-out;
+            pointer-events: none; // Permite click a través de la etiqueta
+            
+            // Estilo de la etiqueta
+            font-family: $font-family;
+            font-weight: 400;
+            font-size: 16px; // Mismo tamaño que el texto de entrada
+            color: $color-text-placeholder; // Color tenue como placeholder
+        }
+        
+        // EFECTO FLOTANTE (Movimiento de la Label)
+        input:focus + label,
+        input:valid + label { // Asumimos que "required" en HTML hace que :valid funcione si tiene texto
+            transform: translateY(0.3rem); // Posición final (arriba)
+            font-size: 10px; // Tamaño final (más pequeño)
+            color: var.$color-dark-blue; // Color final (más oscuro)
+            font-weight: 600; // SemiBold para la etiqueta flotante
+        }
+    }
+
+    // --- 5. Checkboxes (Acepto la Política de...) ---
+    .checkbox-group {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.8rem;
+        
+        // Estilos para el TEXTO al lado del checkbox
+        font-family: $font-family;
+        font-weight: 400; // Regular
+        font-size: 12px;
+        line-height: 20px;
+        letter-spacing: 0.1px;
+        color: var.$color-text;
+
+        input[type="checkbox"] {
+            // Estilos de la caja del checkbox
+            width: 20px;
+            height: 20px;
+            min-width: 20px;
+            min-height: 20px;
+            margin-right: 10px; // 'gap'
+            
+            border: 1px solid $color-input-border;
+            border-radius: 12px;
+            
+            // Colores del checkmark
+            background-color: #0A051E;
+            accent-color: #0A051E;
+        }
+    }
+
+    // --- 6. "Aplican Términos y Condiciones" (Términos) ---
+    .terms {
+        font-family: $font-family;
+        font-weight: 600; // SemiBold
+        font-size: 12px;
+        line-height: 20px;
+        letter-spacing: 0.1px;
+        
+        color: var.$color-dark-blue;
+        text-decoration: underline;
+        cursor: pointer;
+        display: inline-block;
+        margin-top: 0.5rem;
+    }
+
+    // --- 7. Botón "Cotiza aquí" ---
+    .btn-primary {
+        background-color: $color-button-dark; // Fondo Negro #03050F
+        color: #fff;
+        
+        // Estilos de tipografía
+        font-family: $font-family;
+        font-weight: 700; // Bold
+        font-size: 20px;
+        line-height: 24px;
+        letter-spacing: 0.4px;
+        text-align: center;
+        
+        // Estilos de caja
+        padding: 1rem 1.5rem;
+        border: none;
+        border-radius: 30px;
+        width: 55%;
+        margin-top: 1.5rem;
+        cursor: pointer;
+
+        &:hover {
+            background-color: color.adjust($color-button-dark, $lightness: 10%); 
+        }
+    }
+}

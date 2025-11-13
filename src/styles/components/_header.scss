@@ -1,0 +1,60 @@
+// src/styles/components/_header.scss
+
+@use '../abstracts/variables' as var;
+
+.header {
+    // Fondo oscuro para la página de inicio (según el diseño final)
+    background-color: #fff; // Asumiendo que $color-dark-blue es el color oscuro que se ve.
+    color: #fff;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1.5rem; // Padding más ajustado (menos alto)
+
+    @media (min-width: var.$breakpoint-desktop) {
+        padding: 0.75rem 15rem; // Más padding lateral en escritorio
+    }
+
+    &__logo {
+        // Contenedor del logo, si es necesario centrarlo verticalmente
+        display: flex;
+        align-items: center;
+        
+        img {
+            height: 2rem; // Ajustar el tamaño del logo si es necesario (es un poco más pequeño)
+            width: auto;
+        }
+    }
+
+    &__contact {
+        display: flex;
+        align-items: center;
+        gap: 1rem; // Espacio entre el texto y el número
+        font-size: 0.85rem; // Tamaño de texto para "¿Compra por este medio?"
+
+        span {
+            // Aplicación de estilos para "¿Compra por este medio?"
+            font-family: 'BR Sonoma', sans-serif; // CLAVE: Usa la fuente declarada
+            font-weight: 600;                     // Peso de la fuente (SemiBold)
+            font-size: 12px;                      // Tamaño
+            line-height: 16px;                    // Altura de línea
+            letter-spacing: 0.2px;                // Espaciado entre letras
+            text-align: right;                    // Alineación del texto
+            color: #000;                       // Color de texto más tenue
+            
+            // Nota: Propiedades como leading-trim y font-style: SemiBold no son CSS estándar.
+            // font-weight: 600 maneja el SemiBold, y line-height maneja el espaciado vertical.
+            font-style: normal; // Asegura que no sea itálica/cursiva
+        }
+
+        a {
+            color: #000;
+            font-size: 1.1rem; // Simula 'x-large', ajusta este valor si es necesario
+            font-weight: 700;  // Simula 'secondary' o negrita
+            display: flex;     // CLAVE: Usa flexbox para alinear el icono y el texto
+            align-items: center;
+            gap: 0.5rem;       // Espacio entre el icono y el texto
+        }
+    }
+}
